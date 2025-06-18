@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOGS" value="./logs"/>
+
+    <appender name="Console"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>
+                %black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1}): %msg%n%throwable
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="UserLogFile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/users.log</file>
+        <encoder
+                class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d %p %C{1} [%t] %m%n</Pattern>
+        </encoder>
+
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/users-%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="CoreLogFile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/core.log</file>
+        <encoder
+                class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d %p %C{1} [%t] %m%n</Pattern>
+        </encoder>
+
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily and purge older than 30 days -->
+            <fileNamePattern>${LOGS}/archived/core-%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="TaskLogFile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/tasks.log</file>
+        <encoder
+                class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d %p %C{1} [%t] %m%n</Pattern>
+        </encoder>
+
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/tasks-%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="ru.kpfu.codeinium.tasko.user" level="ERROR" additivity="false">
+        <appender-ref ref="UserLogFile"/>
+        <appender-ref ref="Console"/>
+    </logger>
+
+    <logger name="ru.kpfu.codeinium.tasko.task" level="ERROR" additivity="false">
+        <appender-ref ref="TaskLogFile"/>
+        <appender-ref ref="Console"/>
+    </logger>
+
+    <logger name="ru.kpfu.codeinium.tasko" level="ERROR" additivity="false">
+        <appender-ref ref="CoreLogFile"/>
+        <appender-ref ref="Console"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="Console"/>
+    </root>
+
+</configuration> 
+ 
