@@ -1,0 +1,9 @@
+2025-06-14 10:12:31,616 INFO o.s.b.StartupInfoLogger [main] Starting TaskoApplication using Java 17.0.10 with PID 55791 (/Users/codeinium/programming/tasko-project/sem-work-3-codeinium/backend/tasko/target/classes started by codeinium in /Users/codeinium/programming/tasko-project/sem-work-3-codeinium/backend/tasko)
+2025-06-14 10:12:31,621 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-06-14 10:12:31,622 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2025-06-14 10:12:38,925 DEBUG o.s.w.f.GenericFilterBean [main] Filter 'jwtAuthenticationFilter' configured for use
+2025-06-14 10:12:41,716 INFO o.s.b.StartupInfoLogger [main] Started TaskoApplication in 11.614 seconds (process running for 12.639)
+2025-06-14 10:22:07,195 INFO r.k.c.t.c.ProfileController [http-nio-8080-exec-1] Received request to upload photo for user
+2025-06-14 10:22:07,195 INFO r.k.c.t.c.ProfileController [http-nio-8080-exec-1] Uploading photo for user ID: 2
+2025-06-14 10:22:07,222 INFO r.k.c.t.c.ProfileController [http-nio-8080-exec-1] Photo saved to: src/main/resources/static/uploads/2/photo.jpg
+2025-06-14 10:22:07,233 INFO r.k.c.t.c.ProfileController [http-nio-8080-exec-1] Photo uploaded successfully for user ID: 2

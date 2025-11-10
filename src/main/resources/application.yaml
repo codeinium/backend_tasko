@@ -1,0 +1,49 @@
+spring:
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+
+  config:
+    import: classpath:application-local.properties
+  datasource:
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER}
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+  application:
+    name: tasko
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${GMAIL_USERNAME}
+    password: ${GMAIL_PASSWORD}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.ssl.trust: smtp.gmail.com
+app:
+
+  base-url: localhost:8080
+  jwt:
+    expiration-ms: 86400000 # 24 часа
+
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    ru.kpfu.codeinium.tasko: DEBUG # Это включит логирование для наших сервисов
+    org.springframework.security: DEBUG # Включаем логирование для Spring Security
+
+springdoc:
+  swagger-ui:
+    path: /api/docs
+    url: /api/v3/api-docs
+  api-docs:
+    path: /api/v3/api-docs
